@@ -2,10 +2,21 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% if (currentUser) {%>
+    <h1>WELCOME BACK <%= currentUser.first_name %></h1>
+    <a href="/club/logout">LOG OUT</a>
+    <form action="/club/message" method="POST">
+      <input type="text" name="title" placeholder="Enter the title" />
+      <textarea name="message" placeholder="Enter your message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <% } else { %>
+    <h1>please log in or sign up</h1>
+    <a href="/club/login">LOG IN</a>
+    <a href="/club/signup">SIGN UP</a>
+    <%}%> <%- include('chats', { allMessages: allMessages }) %>
   </body>
 </html>

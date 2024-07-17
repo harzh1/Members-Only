@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Members Only - Chats</title>
+  </head>
+  <body>
+    <h1>Members Only - Chats</h1>
+    <div id="chat-container"><% /* Your chat content goes here */ %></div>
+    <% allMessages.forEach(function(message) { %>
+    <div class="message">
+      <% if (currentUser) {%>
+      <p><strong>Author:</strong> <%= message.author.name %></p>
+      <p><strong>Date:</strong> <%= message.timestamp %></p>
+      <% } %>
+      <p><strong>Message:</strong> <%= message.message %></p>
+    </div>
+    <% }) %>
+  </body>
+</html>
